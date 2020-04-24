@@ -1,0 +1,106 @@
+{
+  "returnCode": "0000",
+  "returnMsg": "成功",
+  "resultData": {
+    "list": [
+      {
+        "desp": "社医全面保障",
+        "imgurl": "图片路径",
+        "label": "社会保险",
+        "value": "1001",
+        "childs": [
+          {
+            "label": "全部",
+            "value": "10011001",
+            "childs": [
+              {
+                "app": true,
+                "imgurl": "images/si-icon/sbkgl.png",
+                "linkUrl": "sscard",
+                "appUrl": "modules/sscard/index.html",
+                "label": "实体社保卡",
+                "value": "100110010025",
+                "h5": true
+              },
+              {
+                "app": true,
+                "imgurl": "images/si-icon/zjryzs.png",
+                "linkUrl": "certificate",
+                "appUrl": "modules/certificate/certificate01.html",
+                "label": "职称证书",
+                "value": "100110010010",
+                "h5": true
+              },
+              {
+                "app": true,
+                "imgurl": "images/apply.png",
+                "linkUrl": "rights",
+                "appUrl": "modules/rights/rights.html",
+                "label": "社保权益单",
+                "value": "100110010013",
+                "h5": true
+              },
+              {
+                "app": true,
+                "imgurl": "images/qyylEstimateThe.png",
+                "linkUrl": "qyylEstimateThe",
+                "appUrl": "modules/si/mi/qyylEstimateThe.html",
+                "label": "养老金估算",
+                "value": "100110010014",
+                "h5": true
+              }
+            ]
+          },
+          {
+            "label": "查询类",
+            "value": "10011002",
+            "childs": [
+              {
+                "app": true,
+                "imgurl": "images/si-icon/zjryzs.png",
+                "linkUrl": "certificate",
+                "appUrl": "modules/certificate/certificate01.html",
+                "label": "职称证书",
+                "value": "100110010010",
+                "h5": true
+              },
+              {
+                "app": true,
+                "imgurl": "images/apply.png",
+                "linkUrl": "rights",
+                "appUrl": "modules/rights/rights.html",
+                "label": "社保权益单",
+                "value": "100110010013",
+                "h5": true
+              },
+              {
+                "app": true,
+                "imgurl": "images/qyylEstimateThe.png",
+                "linkUrl": "qyylEstimateThe",
+                "appUrl": "modules/si/mi/qyylEstimateThe.html",
+                "label": "养老金估算",
+                "value": "100110010014",
+                "h5": true
+              }
+            ]
+          },
+          {
+            "label": "办理类",
+            "value": "10011003",
+            "childs": [
+              {
+                "app": true,
+                "imgurl": "images/si-icon/sbkgl.png",
+                "linkUrl": "sscard",
+                "appUrl": "modules/sscard/index.html",
+                "label": "实体社保卡",
+                "value": "100110010025",
+                "h5": true
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
