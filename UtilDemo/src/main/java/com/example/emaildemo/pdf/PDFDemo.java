@@ -41,17 +41,17 @@ public class PDFDemo {
 //        PDFUtil2 pdfUtil = new PDFUtil2();
 //        pdfUtil.getNoticeOfReceipt(null,null,null);
 
-//        String resultStr = RSAUtils.getJSONString("SI0061.json");
-//        Map result = JSONObject.parseObject(resultStr);
-////        System.out.println(new String(Base64.decode(((Map)result.get("resultData")).get("pdfData").toString())));
-//        base64ConTo(((Map)result.get("resultData")).get("pdfData").toString());
+        String resultStr = RSAUtils.getJSONString("SI0061.json");
+        Map result = JSONObject.parseObject(resultStr);
+//        System.out.println(new String(Base64.decode(((Map)result.get("resultData")).get("pdfData").toString())));
+        base64ConTo(((Map)result.get("resultData")).get("pdfData").toString());
 
-        String aaa229 = "65000020200306201217";
-        String aaa229Max = "65000020200306201216";
-        double subVale = BigDecimal.valueOf(Double.parseDouble(aaa229)).subtract(BigDecimal.valueOf(Double.parseDouble(aaa229Max))).doubleValue();
-        System.out.println(subVale);
-        System.out.println(Double.parseDouble(aaa229));
-        System.out.println(Double.parseDouble(aaa229Max));
+//        String aaa229 = "65000020200306201217";
+//        String aaa229Max = "65000020200306201216";
+//        double subVale = BigDecimal.valueOf(Double.parseDouble(aaa229)).subtract(BigDecimal.valueOf(Double.parseDouble(aaa229Max))).doubleValue();
+//        System.out.println(subVale);
+//        System.out.println(Double.parseDouble(aaa229));
+//        System.out.println(Double.parseDouble(aaa229Max));
     }
 
     public static void base64ConTo(String base64Str){

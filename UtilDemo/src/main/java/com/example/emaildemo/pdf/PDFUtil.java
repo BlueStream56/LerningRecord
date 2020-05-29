@@ -147,7 +147,22 @@ public class PDFUtil {
                 stringObjectMap.put("returnMsg", "未查询对应的参保记录");
                 return stringObjectMap;
             }
+            Map newSi0022 = null;
+            for (Map map: rsList) {
+                map = MapUtils.changeKeyToUpperCase(map);
+                if (map.get("AAC008BM") == "1" || "1".equalsIgnoreCase(map.get("AAC008BM").toString())){
+                    newSi0022 = map;
+                    break;
+                }
+                if (map.get("AAC008BM") == "5" || "5".equalsIgnoreCase(map.get("AAC008BM").toString())){
+                    newSi0022 = map;
+                }
+            }
             resultData = new HashMap();
+            if(null != newSi0022 && null != newSi0022.get("AAC999") && !"".equals(newSi0022.get("AAC999"))){
+                rsList = new ArrayList<Map>();
+                rsList.add(newSi0022);
+            }
             resultData.put("jsonlist", rsList);
             stringObjectMap.put("resultData", resultData);
             stringObjectMap.put("returnCode", curReturnCode);

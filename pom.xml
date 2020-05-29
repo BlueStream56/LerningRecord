@@ -29,6 +29,8 @@
         <itextAsian.version>5.2.0</itextAsian.version>
         <xmlworker.version>5.5.8</xmlworker.version>
         <cxf.version>3.1.12</cxf.version>
+        <httpclient.version>4.5.3</httpclient.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -72,6 +74,16 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxws</artifactId>
                 <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents</groupId>
+                <artifactId>httpclient</artifactId>
+                <version>${httpclient.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
