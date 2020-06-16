@@ -34,8 +34,9 @@ import java.util.Date;
 public class TestDemo {
 
     private static final String START_BODY = "SSSS|%s|*|%s|%s|%s|%s|ZZZZ";
+    private static final String SBKJQ_BODY = "SSSS|JQ01|?|%s|%s|%s|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL|NULL;%s;%s|ZZZZ";
 
-    private static String host="192.168.10.149";// IP
+    private static String host="192.168.10.130";// IP
     private static int post = 7020;// 端口
     private static String charset = "GBK";// 编码格式
     private static String termCode = "2.0007#3806974923E2E9D3CB";// 收费终端唯一标识符
@@ -65,11 +66,17 @@ public class TestDemo {
         }
     }
 
+    /**
+     * 社保卡鉴权
+     * @return
+     */
+    public String invokeSbkjq(String businessType, String businessBody){
+        return invode(String.format(SBKJQ_BODY, termCode, user, pwd, businessType, businessBody));
+    }
+
     public static void main(String[] args) {
+//        js06();
         cx01();
-        cx01();
-//        dj01();
-//        dj04();
     }
 
     public static void cx01(){
@@ -99,6 +106,26 @@ public class TestDemo {
         String dj01 = "0100001500|36100000075554|冯国平|"+akc190+"|11|NULL|NULL|ysbm|医师姓名|"+20200516+"|"+141038+"|0|0|NULL|NULL|361001;1|78416|一般诊疗费|||10|1|10|60011020000100000000|普通门诊诊查费|次|;2|40016157|感冒清热颗粒|12g*20袋||1|6|6|Z-A01BA-G0120|感冒清热颗粒|包|tid;3|4001359|阿莫西林克拉维酸钾分散片|12s||1.3975|6|8.39|X-J01CA-A040-A006|阿莫西林|片|tid";
         String resultMsg = testDemo.invode("JS04", dj01);
         System.out.println(resultMsg);
+    }
+
+    public static void jq01(){
+        TestDemo testDemo = new TestDemo();
+        String jq01 = "sfz|362526197003050510|冯国平";
+        String resultMsg = testDemo.invokeSbkjq("CX01",jq01);
+        System.out.println(resultMsg);
+        System.out.println(jq01);
+    }
+
+    public static void js06(){
+        TestDemo testDemo = new TestDemo();
+//        String js06 = "SSSS|JS06|*|2.0007#3806974923E2E9D3CB|00050478|123456|2003284778|36110003390331|吴大陆|1047690100|1064956379|361001|ZZZZ";
+        String[] js06s = {"SSSS|JS06|*|2.0007#3806974923E2E9D3CB|00050478|123456|2003284778|36110003390331|吴大陆|1047690106|1064956438|361001|ZZZZ",
+        "SSSS|JS06|*|2.0007#3806974923E2E9D3CB|00050478|123456|2003284778|36110003390331|吴大陆|1047690106|1064956436|361001|ZZZZ"
+};
+        for (String js06 : js06s) {
+            String resultMsg = testDemo.invode(js06);
+            System.out.println(resultMsg);
+        }
     }
 
 
