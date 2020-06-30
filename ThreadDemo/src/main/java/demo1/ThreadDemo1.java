@@ -1,5 +1,6 @@
 package demo1;
 
+import javax.xml.crypto.Data;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -31,44 +32,50 @@ public class ThreadDemo1 {
 
     private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    public static Date parse(String date){
-        Date parse = null;
-        try {
-            return sdf.parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return null;
-    }
+//    public static Date parse(String date){
+//        Date parse = null;
+//        try {
+//            return sdf.parse(date);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        return null;
+//    }
+//
+//    public static void main(String[] args) {
+//        Thread thread1 = new Thread(() -> {
+//            Date parse = parse("2020-04-01 14:27:00");
+//            System.out.println("当前时间：" + parse);
+//        });
+//
+//        Thread thread2 = new Thread(() -> {
+//            Date parse = parse("2020-04-01 14:27:00");
+//            System.out.println("当前时间：" + parse);
+//        });
+//
+//        Thread thread3 = new Thread(() -> {
+//            Date parse = parse("2020-04-01 10:10:10");
+//            System.out.println("当前时间：" + parse);
+//        });
+//
+//        thread1.start();
+//        thread2.start();
+//        thread3.start();
+//
+//        try {
+//            thread1.join();
+//            thread2.join();
+//            thread3.join();
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("现场执行完毕");
+//    }
 
-    public static void main(String[] args) {
-        Thread thread1 = new Thread(() -> {
-            Date parse = parse("2020-04-01 14:27:00");
-            System.out.println("当前时间：" + parse);
-        });
-
-        Thread thread2 = new Thread(() -> {
-            Date parse = parse("2020-04-01 14:27:00");
-            System.out.println("当前时间：" + parse);
-        });
-
-        Thread thread3 = new Thread(() -> {
-            Date parse = parse("2020-04-01 10:10:10");
-            System.out.println("当前时间：" + parse);
-        });
-
-        thread1.start();
-        thread2.start();
-        thread3.start();
-
-        try {
-            thread1.join();
-            thread2.join();
-            thread3.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        System.out.println("现场执行完毕");
+    public static void main(String[] args) throws ParseException {
+        String time = "20200624173400";
+        Date date = new SimpleDateFormat("yyyyMMddHHmmss").parse(time);
+        System.out.println(date);
     }
 
 }

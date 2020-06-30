@@ -43,7 +43,7 @@ public class PDFDemo {
 
         String resultStr = RSAUtils.getJSONString("SI0061.json");
         Map result = JSONObject.parseObject(resultStr);
-//        System.out.println(new String(Base64.decode(((Map)result.get("resultData")).get("pdfData").toString())));
+        System.out.println(new String(Base64.decode(((Map)result.get("resultData")).get("pdfData").toString())));
         base64ConTo(((Map)result.get("resultData")).get("pdfData").toString());
 
 //        String aaa229 = "65000020200306201217";
@@ -58,7 +58,7 @@ public class PDFDemo {
         byte[] bContent = Base64.decode(base64Str);
         try {
             FileOutputStream fos = new FileOutputStream(
-                    new File("d:\\缴费证明\\到账单——" + System.currentTimeMillis() + ".pdf"));
+                    new File("d:\\到账单——" + System.currentTimeMillis() + ".pdf"));
             fos.write(bContent);
             fos.close();
         } catch (Exception e) {

@@ -18,7 +18,7 @@
         <module>utildemo</module>
         <module>jvmdemo</module>
         <module>ThreadDemo</module>
-        <module>WebServiceDemo</module>
+        <module>WebServiceTest</module>
         <module>NettyDemo</module>
     </modules>
 
@@ -35,6 +35,7 @@
         <shiro.version>1.4.0</shiro.version>
         <mysql.version>8.0.20</mysql.version>
         <druid.version>1.0.31</druid.version>
+        <netty.version>4.1.36.Final</netty.version>
     </properties>
 
     <dependencyManagement>
@@ -78,6 +79,15 @@
                 <groupId>org.apache.cxf</groupId>
                 <artifactId>cxf-rt-frontend-jaxws</artifactId>
                 <version>${cxf.version}</version>
+            </dependency><dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-rt-transports-http</artifactId>
+                <version>${cxf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.cxf</groupId>
+                <artifactId>cxf-bundle</artifactId>
+                <version>2.7.3</version>
             </dependency>
             <dependency>
                 <groupId>org.apache.httpcomponents</groupId>
@@ -108,6 +118,26 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-handler</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-codec-http</artifactId>
+                <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>io.netty</groupId>
+                <artifactId>netty-all</artifactId>
+                <version>${netty.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
