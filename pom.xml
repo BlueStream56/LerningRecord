@@ -36,6 +36,9 @@
         <mysql.version>8.0.20</mysql.version>
         <druid.version>1.0.31</druid.version>
         <netty.version>4.1.36.Final</netty.version>
+        <coder.verison>1.14</coder.verison>
+        <net.version>3.6</net.version>
+        <bouncycastle.version>1.46</bouncycastle.version>
     </properties>
 
     <dependencyManagement>
@@ -138,6 +141,26 @@
                 <groupId>io.netty</groupId>
                 <artifactId>netty-all</artifactId>
                 <version>${netty.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-codec</groupId>
+                <artifactId>commons-codec</artifactId>
+                <version>${coder.verison}</version>
+            </dependency>
+            <dependency>
+                <groupId>commons-net</groupId>
+                <artifactId>commons-net</artifactId>
+                <version>${net.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk16</artifactId>
+                <version>${bouncycastle.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.bouncycastle</groupId>
+                <artifactId>bcprov-jdk15on</artifactId>
+                <version>1.60</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

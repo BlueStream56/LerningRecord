@@ -1,9 +1,5 @@
 package com.example.designpatterns.j2ee.servicelocator;
 
-import com.sun.org.apache.xml.internal.security.Init;
-
-import java.io.Serializable;
-
 /**
  * <ul>
  * <li>文件名称：ServiceLocator </li>

@@ -1,6 +1,7 @@
 package com.example.emaildemo;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
@@ -70,9 +71,11 @@ public class XyTestDemo {
     }
 
     public static void main(String[] args) {
+        js07();
 //        js08();
 //        js09();
-        cx01();
+//        cx01();
+//        cx22();
     }
 
     public static void cx01(){
@@ -84,14 +87,38 @@ public class XyTestDemo {
 
     public static void js07(){
         XyTestDemo xyTestDemo = new XyTestDemo();
-        String js07 = "SSSS|JS07|*|20200613|99_1000|99_1000|NULL|674447490|NULL|11|NULL|NULL|NULL|NULL|20131209110781|黄琳|20200613|081833|1|FALSE|NULL|NULL|360521;1|117643|阿司匹林|NULL|NULL|15|1|15|X-B01AC-A056-A001|阿司匹林|NULL|NULL;2|118072|阿司匹林|NULL|NULL|0|1|0|X-B01AC-A056-E003|阿司匹林|NULL|NULL;3|118707|复方阿魏酸钠阿司匹林|NULL|NULL|0|1|0|X-B01AC-F122-E001|复方阿魏酸钠阿司匹林|NULL|NULL|ZZZZ";
+        String date = new SimpleDateFormat("yyyyMMdd").format(new Date());
+        String date2 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date());
+        String date3 = new SimpleDateFormat("HHmmss").format(new Date());
+        String js07 = "SSSS|JS07|*|"+date+"|99_1000|99_1000|NULL|674447490|NULL|11|NULL|NULL|NULL|NULL|"+date2+"|黄琳|"+date+"|"+date3+"|1|FALSE|NULL|NULL|360521|"+(date2+"01")+"|1;1|117643|阿司匹林|NULL|NULL|15|1|15|X-B01AC-A056-A001|阿司匹林|NULL|NULL;2|118072|阿司匹林|NULL|NULL|0|1|0|X-B01AC-A056-E003|阿司匹林|NULL|NULL;3|118707|复方阿魏酸钠阿司匹林|NULL|NULL|0|1|0|X-B01AC-F122-E001|复方阿魏酸钠阿司匹林|NULL|NULL|ZZZZ";
         String returnMsg = xyTestDemo.invode(js07);
+        String[] arrayMsg =returnMsg.split("\\|");
+//         akc264.交易总金额  =19.医疗总费用
+//         ake149 .医保支付金额   = 19.医疗总费用-21.本次现金支付-37.定点机构支付  (需要确定个人账户、定点机构支付是否属于医保支付)
+//         ake039.医保统筹支付  = 22.职工基本医疗基金支付 +23.城镇居民基本医疗基金支付 (需要确定民政救助等是否属于医保统筹内)
+//         akb066.个人账户支付 = 20.本次账户支付
+//         ake173.其他基金支付 = 19.医疗总费用-21.本次现金支付-  22.职工基本医疗基金支付 - 23.城镇居民基本医疗基金支付
+//         ake201.现金支付金额 =21.本次现金支付
+        BigDecimal akc264 = new BigDecimal(arrayMsg[20]);//交易总金额
+        BigDecimal akb066 = new BigDecimal(arrayMsg[21]);//本次账户支付
+        BigDecimal ake201 = new BigDecimal(arrayMsg[22]);//本次现金支付
+        BigDecimal ake149 = akc264.subtract(akb066).subtract(ake201);//医保支付金额
+        BigDecimal ake039 = new BigDecimal(arrayMsg[23]).add(new BigDecimal(arrayMsg[24]));//医保统筹支付
+        BigDecimal ake173 = akc264.subtract(ake201).subtract(ake039);//其他基金支付
+
+        System.out.println("交易总金额："+akc264);
+        System.out.println("本次账户支付："+akb066);
+        System.out.println("本次现金支付："+ake201);
+        System.out.println("医保支付金额："+ake149);
+        System.out.println("医保统筹支付："+ake039);
+        System.out.println("其他基金支付："+ake173);
         System.out.println(returnMsg);
     }
 
     public static void js08(){
         XyTestDemo xyTestDemo = new XyTestDemo();
-        String js08 = "SSSS|JS08|*|20200613|99_1000|99_1000|NULL|674447490|NULL|11|NULL|NULL|NULL|NULL|20131209110781|黄琳|20200613|081833|1|FALSE|NULL|NULL|360521;1|117643|阿司匹林|NULL|NULL|15|1|15|X-B01AC-A056-A001|阿司匹林|NULL|NULL;2|118072|阿司匹林|NULL|NULL|0|1|0|X-B01AC-A056-E003|阿司匹林|NULL|NULL;3|118707|复方阿魏酸钠阿司匹林|NULL|NULL|0|1|0|X-B01AC-F122-E001|复方阿魏酸钠阿司匹林|NULL|NULL|ZZZZ";
+//        String js08 = "SSSS|JS08|*|20200805|99_1000|99_1000|NULL|674447490|NULL|11|NULL|NULL|NULL|NULL|20200805170614|黄琳|20200805|170614|1|FALSE|NULL|NULL|360521|2020080517061401|1;1|117643|阿司匹林|NULL|NULL|15|1|15|X-B01AC-A056-A001|阿司匹林|NULL|NULL;2|118072|阿司匹林|NULL|NULL|0|1|0|X-B01AC-A056-E003|阿司匹林|NULL|NULL;3|118707|复方阿魏酸钠阿司匹林|NULL|NULL|0|1|0|X-B01AC-F122-E001|复方阿魏酸钠阿司匹林|NULL|NULL|ZZZZ";
+        String js08 = "SSSS|JS08|*|20200806|99_1000|99_1000|NULL|674447490|NULL|11|NULL|NULL|NULL|NULL|20200806174031|黄琳|20200806|174031|1|FALSE|NULL|NULL|360521|2020080617403101|1;1|117643|阿司匹林|NULL|NULL|15|1|15|X-B01AC-A056-A001|阿司匹林|NULL|NULL;2|118072|阿司匹林|NULL|NULL|0|1|0|X-B01AC-A056-E003|阿司匹林|NULL|NULL;3|118707|复方阿魏酸钠阿司匹林|NULL|NULL|0|1|0|X-B01AC-F122-E001|复方阿魏酸钠阿司匹林|NULL|NULL|ZZZZ";
         String returnMsg = xyTestDemo.invode(js08);
         System.out.println(returnMsg);
     }
@@ -99,6 +126,13 @@ public class XyTestDemo {
     public static void js09(){
         XyTestDemo xyTestDemo = new XyTestDemo();
         String js09 = "SSSS|JS09|*|20200613|99_1000|99_1000|NULL|674447490|NULL|00000000000028110256|32272685|360502|ZZZZ";
+        String returnMsg = xyTestDemo.invode(js09);
+        System.out.println(returnMsg);
+    }
+
+    public static void cx22(){
+        XyTestDemo xyTestDemo = new XyTestDemo();
+        String js09 = "SSSS|CX22|*|20200807|99_1000|99_1000|12456|00000000000028110442|32272837|1000|1|NULL|NULL|1|ZZZZ";
         String returnMsg = xyTestDemo.invode(js09);
         System.out.println(returnMsg);
     }
